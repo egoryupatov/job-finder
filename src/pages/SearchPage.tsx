@@ -33,20 +33,22 @@ export const SearchPage: React.FC = () => {
   }, [debouncedSearchQuery]);
 
   return (
-    <div>
-      <div>
-        <Input
-          placeholder="Start searching for a job..."
-          onChange={handleInputChange}
-        />
-      </div>
-      {!!jobs.length && (
-        <div className="search_results__wrapper">
-          {jobs.map((job: Job) => (
-            <JobCard job={job} />
-          ))}
+    <div className="wrapper">
+      <div className="page-content__wide">
+        <div>
+          <Input
+            placeholder="Start searching for a job..."
+            onChange={handleInputChange}
+          />
         </div>
-      )}
+        {!!jobs.length && (
+          <div className="search_results__wrapper">
+            {jobs.map((job: Job) => (
+              <JobCard job={job} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
