@@ -18,9 +18,16 @@
   }
 
   &__salary {
+    display: flex;
     font-size: 18px;
     font-weight: 400;
     color: #000;
+    gap: 20px;
+  }
+
+  &__tags {
+    display: flex;
+    gap: 2px;
   }
 
   &__employer {

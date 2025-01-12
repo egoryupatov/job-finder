@@ -10,22 +10,12 @@ import {
   GetJobsResponse,
 } from "./types/jobs";
 
-export const getJobs = async ({
-  query,
-  page,
-  numPages,
-  country,
-  datePosted,
-  workFromHome,
-}: GetJobsParams): Promise<GetJobsResponse[] | null> => {
+export const getJobs = async (
+  params: GetJobsParams
+): Promise<GetJobsResponse[] | null> => {
   const response = await axiosInstance.get("search", {
     params: {
-      query: query,
-      page: page,
-      num_pages: numPages,
-      country: country,
-      date_posted: datePosted,
-      work_from_home: workFromHome,
+      ...params,
     },
   });
   return response.data.data;
