@@ -21,7 +21,7 @@ export interface Job {
   job_country: string;
   job_latitude: number;
   job_longitude: number;
-  job_benefits: string | null;
+  job_benefits: string[] | null;
   job_google_link: string;
   job_salary: string | null;
   job_min_salary: number | null;

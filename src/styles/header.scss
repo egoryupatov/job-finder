@@ -1,7 +1,33 @@
 .header {
   &__wrapper {
-    display: flex;
-    height: 30px;
     background: #000000;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+    height: 72px;
+    padding: 0 16px;
+    max-width: 1920px;
+    box-sizing: border-box;
+    margin: 0 auto;
+
+    &__left,
+    &__right {
+      display: flex;
+      gap: 15px;
+      color: #808080;
+      align-items: center;
+
+      span:hover {
+        color: #ffffff;
+      }
+    }
+  }
+
+  &__logo {
+    margin-right: 10px;
   }
 }

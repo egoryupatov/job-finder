@@ -1,10 +1,11 @@
 export interface GetJobsParams {
-  query: string;
+  query?: string;
   page?: number;
-  numPages?: number;
+  num_pages?: number;
   country?: string;
-  datePosted?: string;
-  workFromHome?: boolean;
+  date_posted?: string;
+  employment_types?: string[];
+  work_from_home?: boolean;
 }
 
 export interface GetJobDetailsParams {

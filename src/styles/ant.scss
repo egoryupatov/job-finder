@@ -1,0 +1,39 @@
+.ant-input {
+  height: 40px;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+}
+
+.ant-radio-wrapper,
+.ant-checkbox-wrapper {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+}
+
+.ant-pagination-item {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  font-family: "Inter", sans-serif !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  border-radius: 50% !important;
+}
+
+.ant-pagination-item-active {
+  border: none !important;
+  background: #f1f4f9 !important;
+}
+
+.ant-pagination-item-active a {
+  color: #000000 !important;
+}
+
+.ant-pagination-prev,
+.ant-pagination-next {
+  display: none !important;
+}
