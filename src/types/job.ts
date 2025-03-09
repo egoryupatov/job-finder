@@ -38,7 +38,7 @@ interface ApplyOption {
   is_direct: boolean;
 }
 
-interface JobHighlights {
+export interface JobHighlights {
   Qualifications: string[];
   Benefits: string[];
   Responsibilities: string[];

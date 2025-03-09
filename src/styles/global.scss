@@ -5,6 +5,16 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
