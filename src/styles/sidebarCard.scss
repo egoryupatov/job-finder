@@ -1,0 +1,44 @@
+.sidebarCard {
+  &__wrapper {
+    display: flex;
+    gap: 16px;
+    padding: 18px 16px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px #ccd5df solid;
+    transition: box-shadow 0.3s ease;
+  }
+
+  &__wrapper:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 8px;
+  }
+
+  &__avatar {
+  }
+
+  &__info-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__rating-wrapper {
+    display: flex;
+    gap: 5px;
+  }
+
+  &__rating-score {
+  }
+
+  &__rating-stars {
+  }
+
+  &__rating-feedback {
+  }
+}

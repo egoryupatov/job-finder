@@ -1,31 +1,62 @@
+import { useQuery } from "@tanstack/react-query";
 import { axiosInstance } from "./main";
 import {
   GetCompanyJobSalaryParams,
   GetCompanyJobSalaryResponse,
   GetJobDetailsParams,
   GetJobDetailsResponse,
-  GetJobSalaryParams,
-  GetJobSalaryResponse,
   GetJobsParams,
   GetJobsResponse,
 } from "./types/jobs";
 
-export const getJobs = async ({
-  query,
-  page,
-  numPages,
-  country,
-  datePosted,
-  workFromHome,
-}: GetJobsParams): Promise<GetJobsResponse[] | null> => {
+// hooks
+
+export const useGetJobs = (params: GetJobsParams) => {
+  return useQuery<GetJobsResponse[], Error>({
+    queryKey: ["jobs", params],
+    queryFn: () => getJobs(params),
+  });
+};
+
+export const useGetJobDetails = ({ jobId, country }: GetJobDetailsParams) => {
+  return useQuery<GetJobDetailsResponse, Error>({
+    queryKey: ["jobDetails", jobId, country],
+    queryFn: () => getJobDetails({ jobId, country }),
+  });
+};
+
+export const useGetCompanyJobSalary = ({
+  company,
+  jobTitle,
+  locationType,
+  yearsOfExperience,
+}: GetCompanyJobSalaryParams) => {
+  return useQuery<GetCompanyJobSalaryResponse, Error>({
+    queryKey: [
+      "companyJobSalary",
+      company,
+      jobTitle,
+      locationType,
+      yearsOfExperience,
+    ],
+    queryFn: () =>
+      getCompanyJobSalary({
+        company,
+        jobTitle,
+        locationType,
+        yearsOfExperience,
+      }),
+  });
+};
+
+// api methods
+
+export const getJobs = async (
+  params: GetJobsParams
+): Promise<GetJobsResponse[]> => {
   const response = await axiosInstance.get("search", {
     params: {
-      query: query,
-      page: page,
-      num_pages: numPages,
-      country: country,
-      date_posted: datePosted,
-      work_from_home: workFromHome,
+      ...params,
     },
   });
   return response.data.data;
@@ -34,31 +65,14 @@ export const getJobs = async ({
 export const getJobDetails = async ({
   jobId,
   country,
-}: GetJobDetailsParams): Promise<GetJobDetailsResponse | null> => {
-  const data = await axiosInstance.get("job-details", {
+}: GetJobDetailsParams): Promise<GetJobDetailsResponse> => {
+  const response = await axiosInstance.get("job-details", {
     params: {
       job_id: jobId,
       country: country,
     },
   });
-  return data;
-};
-
-export const getJobSalary = async ({
-  jobTitle,
-  location,
-  locationType,
-  yearsOfExperience,
-}: GetJobSalaryParams): Promise<GetJobSalaryResponse | null> => {
-  const data = await axiosInstance.get("estimated-salary", {
-    params: {
-      job_title: jobTitle,
-      location: location,
-      location_type: locationType,
-      years_of_experience: yearsOfExperience,
-    },
-  });
-  return data;
+  return response.data.data;
 };
 
 export const getCompanyJobSalary = async ({
@@ -66,8 +80,8 @@ export const getCompanyJobSalary = async ({
   jobTitle,
   locationType,
   yearsOfExperience,
-}: GetCompanyJobSalaryParams): Promise<GetCompanyJobSalaryResponse | null> => {
-  const data = await axiosInstance.get("company-job-salary", {
+}: GetCompanyJobSalaryParams): Promise<GetCompanyJobSalaryResponse> => {
+  const response = await axiosInstance.get("company-job-salary", {
     params: {
       company: company,
       job_title: jobTitle,
@@ -75,5 +89,5 @@ export const getCompanyJobSalary = async ({
       years_of_experience: yearsOfExperience,
     },
   });
-  return data;
+  return response.data.data;
 };
