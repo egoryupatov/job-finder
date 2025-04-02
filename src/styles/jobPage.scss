@@ -1,0 +1,21 @@
+.job-page {
+  &__wrapper {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+  }
+
+  &__job-info {
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  &__recommendations {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 450px;
+  }
+}
